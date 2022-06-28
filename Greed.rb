@@ -3,6 +3,7 @@ class GreedGame
   
     def initialize
       @final_round = false
+
     end
   
     def playGame
@@ -63,6 +64,7 @@ class GreedGame
       player_names.each { |name| @array_players << GreedPlayer.new(name) }
       @current_index = -1
       @stopping_index = nil
+
     end
   
     def next
@@ -81,6 +83,7 @@ class GreedGame
       @array_players.sort { |elt, other| elt.total_score <=> other.total_score }.reverse
     end
   end
+
   
   class GreedPlayer
     NB_OF_DICE = 5
@@ -123,6 +126,7 @@ class GreedGame
         end
       end 
   
+      
       if reactToTurnScore
         puts "  In this turn, you have added #{turn_score} points to your score."
       elsif @turn_score > 0
@@ -224,6 +228,7 @@ class GreedGame
   
     return [scoring_dice, score, non_scoring_dice]
   end
+
   
   if __FILE__ == $0
     game = GreedGame.new
