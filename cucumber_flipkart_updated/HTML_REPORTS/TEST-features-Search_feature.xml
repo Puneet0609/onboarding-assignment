@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite failures="0" errors="0" skipped="0" tests="3" time="24.038414" name="Flipkart Search functionality">
+<testcase classname="Flipkart Search functionality" name="Users can search for specific item on Flipkart (outline example : | apple iphone 13 |)" time="7.689002">
+  <system-out>
+    <![CDATA[₹74,299
+]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testcase>
+<testcase classname="Flipkart Search functionality" name="Users can search for specific item on Flipkart (outline example : | oneplus 8 |)" time="8.078545">
+  <system-out>
+    <![CDATA[no button
+₹44,999
+]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testcase>
+<testcase classname="Flipkart Search functionality" name="Users can search for specific item on Flipkart (outline example : | macbook pro |)" time="8.270867">
+  <system-out>
+    <![CDATA[no button
+₹1,27,990
+]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testcase>
+</testsuite>
