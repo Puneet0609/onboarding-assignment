@@ -1,0 +1,20 @@
+{
+  "name": "nw-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "parallel": "nightwatch --test  --env browserstack.chrome,browserstack.ie,browserstack.safari,browserstack.firefox",
+    "test:browserstack": "nightwatch.browserstack.conf.js",
+    "e2e-tests": "npx nightwatch --env cucumber-js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.4.0",
+    "chromedriver": "^103.0.0",
+    "geckodriver": "^3.0.2",
+    "nightwatch": "^2.2.2"
+  }
+}
