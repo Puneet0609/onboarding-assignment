@@ -11,17 +11,23 @@ pipeline {
         stage('build') {
             steps {
                 sh 'source ~/.zshrc'
-                sh '~/.rbenv/shims/ruby'
+                // sh '~/.rbenv/shims/ruby'
                 sh 'ruby -v'
-                sh 'export PATH=$PATH:/Users/puneetmeghrajani/.gem/ruby/3.0.0/bin/bundle'
-                sh '/Users/puneetmeghrajani/.gem/ruby/3.0.0/bin/bundle install'
-                sh '/Users/puneetmeghrajani/.gem/ruby/3.0.0/bin/cucumber --tag @${tags} --format junit --out reports'
-            }
+                sh 'gem install bundler:2.3.16 '
+                // sh 'gem install bundler --user-install'
+                sh 'cd cucumber_flipkart_updated && bundle install && /Users/puneetmeghrajani/.rvm/gems/ruby-3.0.0/bin/cucumber --tag @${tags} --format junit --out reports'
+                
+                // sh 'bundle install'
+                
+                // sh 'export PATH=$PATH:/Users/puneetmeghrajani/.gem/ruby/3.0.0/bin/bundle'
+                // sh '/Users/puneetmeghrajani/.gem/ruby/3.0.0/bin/bundle install'
+            //     sh '/Users/puneetmeghrajani/.gem/ruby/3.0.0/bin/cucumber --tag @${tags} --format junit --out reports'
+             }
             }
         }
         post {
           success {
-                    archiveArtifacts artifacts: 'reports/*.xml', followSymlinks: false
+                    archiveArtifacts artifacts: 'cucumber_flipkart_updated/HTML_REPORTS/*.xml', followSymlinks: false
           }
         }
     }
