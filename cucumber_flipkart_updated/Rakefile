@@ -1,0 +1,15 @@
+require 'cucumber'
+require 'cucumber/rake/task'
+
+Cucumber::Rake::Task.new :features do |t|
+  t.cucumber_opts = '*.feature'
+end
+
+
+
+task :task_name, :arg1 do |t, args|
+  Cucumber::Rake::Task.new(:run) do |t|
+    t.cucumber_opts = "--format pretty --tags @#{args[:arg1]}"
+  end
+  Rake::Task[:run].invoke()
+end
