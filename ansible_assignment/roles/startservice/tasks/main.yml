@@ -1,0 +1,39 @@
+---
+- name: template systemd service config
+  copy:
+    src: files/service
+    dest: /etc/systemd/system/{{ app_name }}.service
+
+    
+- name: start systemd app service
+  systemd: name={{ app_name }}.service state=restarted enabled=yes
+
+
+- name: template nginx site config
+  template:
+    src: files/nginx
+    dest: /etc/nginx/sites-available/{{ app_name }}
+
+- name: remove default nginx site config
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  
+
+- name: enable nginx site
+  file:
+    src: /etc/nginx/sites-available/{{ app_name }}
+    dest: /etc/nginx/sites-enabled/default
+    state: link
+    force: yes
+  notify: restart nginx
+
+# - name: start flask  
+#   command: python3 {{ app_name }}/app.py
+  
+
+    
+
+- name: open firewall for nginx
+  ufw:
+    rule: allow
+    name: Nginx Full
+  notify: gunicorn run

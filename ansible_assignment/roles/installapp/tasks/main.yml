@@ -1,0 +1,17 @@
+---
+- name: Install virtualenv via pip
+  pip:
+    name: virtualenv
+    executable: pip3
+  become: yes
+
+
+- name: install modules in a virtualenv
+  pip:
+    requirements: /home/{{ ansible_ssh_user }}/{{ app_name }}/requirements.txt
+    virtualenv: /home/{{ ansible_ssh_user }}/{{ app_name }}/env
+    virtualenv_python: python3
+
+- name: install flask with pip
+  pip: 
+    name: flask==2.0.2

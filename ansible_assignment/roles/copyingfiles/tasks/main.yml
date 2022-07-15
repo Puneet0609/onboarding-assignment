@@ -1,0 +1,6 @@
+---
+- name: copy files
+  git:
+    repo: "https://github.com/Puneet0609/flask-ansible-example.git"
+    dest: /home/{{ ansible_ssh_user }}/{{ app_name }}
+    update: yes # Does a git pull if the repo already exists
