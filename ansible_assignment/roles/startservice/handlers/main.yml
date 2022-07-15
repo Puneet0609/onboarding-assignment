@@ -1,0 +1,10 @@
+---
+- name: restart nginx
+  service: 
+    name: nginx 
+    state: restarted
+
+- name: gunicorn run
+  command: gunicorn --bind 0.0.0.0:5000 wsgi:app
+  args:
+    chdir: '{{ app_name }}'
